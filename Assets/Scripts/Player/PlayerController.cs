@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    Vector2 direction;
-    public Animator animator;
+    private Vector2 direction;
+
+    [SerializeField]
+    private Animator animator;
+
     private PlayerData playerData;
     private bool right = true;
 
@@ -30,19 +29,17 @@ public class PlayerController : MonoBehaviour
 
         if (direction.x < 0 && right)
         {
-            Debug.Log("left");
             Flip();
         }
         else if (direction.x > 0 && !right)
         {
             Flip();
-            Debug.Log("Right");
         }
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + direction * 10 * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + direction * playerData.GetSpeed() * Time.fixedDeltaTime);
     }
 
     private void Flip()

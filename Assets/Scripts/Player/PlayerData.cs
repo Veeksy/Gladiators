@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerData 
+public class PlayerData: MonoBehaviour
 {
     private static PlayerData instance;
 
+    private const float DEFAULT_SPEED = 5f;
+    private int playerLevel { get; set; } = 1;
+
     private float speed { get; set; }
-    private float manaPoint { get; set; }
-    private float healthPoint { get; set; }
+    private float manaPoint { get; set; } 
+    private float healthPoint { get; set; } = 100;
 
     public static PlayerData getInstance()
     {
@@ -18,9 +18,14 @@ public class PlayerData
         return instance;
     }
 
-    public float GetSpeed() {  return speed; }
+    public float GetSpeed() {  return speed + DEFAULT_SPEED; }
     public float GetManaPoint() { return manaPoint; }
     public float GetHealthPoint() { return healthPoint; }
-
+    public int GetPlayerLevel() { return playerLevel; }
+    public void TakeDamage(int damage) 
+    {
+        healthPoint -= damage;
+        Debug.Log(healthPoint);
+    }
 
 }
