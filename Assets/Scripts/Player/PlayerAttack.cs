@@ -66,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 _animator.SetTrigger("Attack");
                 nextAttackTime = Time.time + 1f / attackRate;

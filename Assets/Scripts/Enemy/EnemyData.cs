@@ -6,9 +6,13 @@ public class EnemyData : MonoBehaviour
 {
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
     private float healthPoint { get; set; }
+    [SerializeField]
     private float speed { get; set; }
+    [SerializeField]
     private int damage { get; set; }
+    [SerializeField]
     private float rangeAttack { get; set; }
 
     public float GetHealthPoint() { return healthPoint; }

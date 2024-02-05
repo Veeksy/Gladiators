@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
     private PlayerData playerData;
     private bool right = true;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerData = PlayerData.getInstance();
+        playerData.setHealthPoint(100);
     }
 
     // Update is called once per frame
@@ -27,6 +28,14 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("HorizontalMove", 
             Mathf.Abs(direction.x != 0 ? direction.x : direction.y));
 
+        if (Input.GetKeyDown(KeyCode.Space) && (direction.x != 0 || direction.y != 0))
+        {
+            animator.SetTrigger("Roll");
+            playerData.setSpeed(playerData.GetSpeed() * 0.45f);
+            Invoke("ReturnSpeed", 0.5f);
+        }
+
+
         if (direction.x < 0 && right)
         {
             Flip();
@@ -35,6 +44,11 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    private void ReturnSpeed()
+    {
+        playerData.setSpeed(playerData.GetBonusSpeed());
     }
 
     private void FixedUpdate()
