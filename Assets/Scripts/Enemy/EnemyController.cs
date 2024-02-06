@@ -10,20 +10,33 @@ public class EnemyController : MonoBehaviour
     private Animator _animator;
     [SerializeField]
     public GameObject player;
+    [SerializeField]
+    private float _cooldownStart;
+
+    [SerializeField]
+    private float _health;
+    [SerializeField]
+    private float _damage;
+    [SerializeField]
+    private float _speed;
 
     private Rigidbody2D rb;
     private PlayerData playerData;
-    [SerializeField]
-    private float _cooldownStart;
+    public HealthBar healthBar;
+
     private float _cooldown;
+
     void Start()
     {
         enemyData = GetComponent<EnemyData>();
         playerData = PlayerData.getInstance();
-        player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
+        //player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        enemyData.SetDamage(20);
-        enemyData.SetHealthPoint(20);
+
+        enemyData.SetDamage(_damage);
+        enemyData.SetHealthPoint(_health);
+        enemyData.SetSpeed(_speed);
     }
     private void Update()
     {

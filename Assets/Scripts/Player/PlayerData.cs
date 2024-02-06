@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerData: MonoBehaviour
+public class PlayerData
 {
     private static PlayerData instance;
 
@@ -8,8 +8,11 @@ public class PlayerData: MonoBehaviour
     private int playerLevel { get; set; } = 1;
     private float speed { get; set; }
     private float bonus_speed { get; set; }
+    private float maxManaPoint { get; set; }
     private float manaPoint { get; set; } 
+    private float maxHealthPoint { get; set; }
     private float healthPoint { get; set; }
+    private float damage { get; set; }
 
     public static PlayerData getInstance()
     {
@@ -19,21 +22,27 @@ public class PlayerData: MonoBehaviour
     }
 
     public float GetSpeed() {  return speed + DEFAULT_SPEED; }
+    public float GetMaxManaPoint() { return maxManaPoint; }
     public float GetManaPoint() { return manaPoint; }
+    public float GetMaxHealthPoint() { return maxHealthPoint; }
     public float GetHealthPoint() { return healthPoint; }
     public int GetPlayerLevel() { return playerLevel; }
     public float GetDefautSpeed() { return DEFAULT_SPEED; }
     public float GetBonusSpeed() { return bonus_speed; }
-
-    public void setSpeed(float speed) { this.speed = speed; }
-    public void setBonusSpeed(float b_speed) { this.bonus_speed = b_speed; }
-    public void setHealthPoint(float healthPoint) { this.healthPoint = healthPoint; }
+    public float GetDamage() { return damage; }
 
 
-    public void TakeDamage(int damage) 
+    public void SetSpeed(float speed) { this.speed = speed; }
+    public void SetBonusSpeed(float b_speed) { this.bonus_speed = b_speed; }
+    public void SetHealthPoint(float healthPoint) { this.healthPoint = healthPoint; }
+    public void SetManaPoint(float manaPoint) { this.manaPoint = manaPoint; }
+    public void SetMaxHealthPoint(float maxHealthPoint) { this.maxHealthPoint = maxHealthPoint; }
+    public void SetDamage(float damage) { this.damage = damage; }
+    public void SetMaxManaPoint(float maxManaPoint) { this.maxManaPoint = maxManaPoint; }
+
+    public void TakeDamage(float damage) 
     {
         healthPoint -= damage;
-        Debug.Log(healthPoint);
     }
 
 }
