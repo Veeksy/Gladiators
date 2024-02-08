@@ -56,9 +56,6 @@ public class PlayerController : MonoBehaviour
 
         if (playerData.GetManaPoint() < playerData.GetMaxManaPoint())
             playerData.SetManaPoint(playerData.GetManaPoint() + Time.deltaTime * 4f);
-
-        Debug.Log(playerData.GetMaxManaPoint());
-        Debug.Log(playerData.GetManaPoint());
     }
 
     private void ReturnSpeed()

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5120104683919238173}
   - component: {fileID: 8492470953169956123}
-  - component: {fileID: 585301112047834192}
   - component: {fileID: 702051570636433526}
   - component: {fileID: 7089808709649753469}
   - component: {fileID: 4099289543640521964}
   - component: {fileID: 4248929899607178773}
+  - component: {fileID: 4833878479589369732}
   m_Layer: 3
   m_Name: SkullWolf
   m_TagString: Enemy
@@ -89,19 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &585301112047834192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4945550106813005203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f24b92b221ea1845a6fbdf84b8b8307, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 4248929899607178773}
 --- !u!114 &702051570636433526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +107,10 @@ MonoBehaviour:
   _health: 15
   _damage: 2
   _speed: 4.2
+  _rangeAttack: 2
+  meleeAttack: 1
+  Bullet: {fileID: 0}
+  ShotPoint: {fileID: 0}
 --- !u!50 &7089808709649753469
 Rigidbody2D:
   serializedVersion: 4
@@ -213,3 +204,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4833878479589369732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945550106813005203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f24b92b221ea1845a6fbdf84b8b8307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

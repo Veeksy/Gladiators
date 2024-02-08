@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject obj = NearTarget(point, colliders);
             
-            var component_enemyData = obj.GetComponent<EnemyData>();
+            var component_enemyData = obj.GetComponent<EnemyController>();
 
             if (obj != null && component_enemyData)
             {
@@ -53,7 +53,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D hit in colliders)
         {
-            var component_enemyData = hit.GetComponent<EnemyData>();
+            var component_enemyData = hit.GetComponent<EnemyController>();
 
             if (component_enemyData)
             {
