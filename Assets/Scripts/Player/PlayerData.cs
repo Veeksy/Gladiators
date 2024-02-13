@@ -7,7 +7,7 @@ public class PlayerData
     private const float DEFAULT_SPEED = 5f;
     private int playerLevel { get; set; } = 1;
     private float speed { get; set; }
-    private float bonus_speed { get; set; }
+    private float bonus_speed { get; set; } = 1f;
     private float maxManaPoint { get; set; }
     private float manaPoint { get; set; } 
     private float maxHealthPoint { get; set; }

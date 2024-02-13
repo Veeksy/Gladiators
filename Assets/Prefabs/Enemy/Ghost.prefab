@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 86545724409896868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2572843, y: 4.222888, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -198,13 +198,14 @@ MonoBehaviour:
   _animator: {fileID: 5364411445908595422}
   player: {fileID: 8264099588342583008, guid: d664e9640386a54429076f9ca995158a, type: 3}
   _cooldownStart: 2
-  _health: 20
+  _health: 25
   _damage: 5
   _speed: 2
   _rangeAttack: 8
   meleeAttack: 0
   Bullet: {fileID: 2981601640070438270, guid: 80208fa1af768d54d83fe402272a164b, type: 3}
   ShotPoint: {fileID: 4784559222203095723}
+  healthBar: {fileID: 0}
 --- !u!114 &-2985323951667081944
 MonoBehaviour:
   m_ObjectHideFlags: 0

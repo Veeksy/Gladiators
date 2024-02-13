@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3186031063913482537}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4344468, y: 4.385861, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 9056099932023064489}
   player: {fileID: 8264099588342583008, guid: d664e9640386a54429076f9ca995158a, type: 3}
-  _cooldownStart: 2
+  _cooldownStart: 3
   _health: 120
   _damage: 3
   _speed: 4
@@ -132,6 +132,7 @@ MonoBehaviour:
   meleeAttack: 1
   Bullet: {fileID: 0}
   ShotPoint: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &5977140202725725536
 MonoBehaviour:
   m_ObjectHideFlags: 0

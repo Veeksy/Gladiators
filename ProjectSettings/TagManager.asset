@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - HealthBar
   - Ground
+  - Minion
+  - MainMusic
   layers:
   - Default
   - TransparentFX

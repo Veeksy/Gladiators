@@ -13,7 +13,7 @@ public class ArenaData
         return instance;
     }
 
-    private int wave { get;  set; }
+    private int wave { get; set; }
     private float spawnDelay { get; set; } = 2.0f;
     private int spawning { get; set; }
     private int countEnemy { get; set; }
@@ -30,6 +30,8 @@ public class ArenaData
 
     public void NextWave()
     {
+        if (wave > 1)
+            Wallet.Replenishment(100);
         SetWave(GetWave() + 1);
 
         if (GetSpawning() <= 12)

@@ -9,11 +9,18 @@ public class PlayerAttack : MonoBehaviour
     private Animator _animator;
     [SerializeField]
     private float attackRange;
+    [SerializeField]
+    private GameObject _arrow;
 
     public Transform _attack;
-
+    PlayerData playerData;
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
+
+    private void Start()
+    {
+        playerData = PlayerData.getInstance();
+    }
 
     static GameObject NearTarget(Vector3 position, Collider2D[] array)
     {
@@ -33,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
         return (current != null) ? current.gameObject : null;
     }
-    public void Action(Vector2 point, float radius, int layerMask, float damage, bool allTargets)
+    public static void Action(Vector2 point, float radius, int layerMask, float damage, bool allTargets)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(point, radius, 1 << layerMask);
         
@@ -82,9 +89,11 @@ public class PlayerAttack : MonoBehaviour
 
     public void onAttack()
     {
-
-        Action(_attack.position, attackRange, 3, 20, true);
+        Action(_attack.position, attackRange, 3, playerData.GetDamage(), true);
     }
 
-
+    public void onAttackRange()
+    {
+        Instantiate(_arrow, _attack.position, _attack.rotation);
+    }
 }

@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -27,6 +30,8 @@ public class EnemyController : MonoBehaviour
     private GameObject Bullet;
     [SerializeField]
     private Transform ShotPoint;
+    [SerializeField]
+    private Slider healthBar;
 
     private Rigidbody2D rb;
     private PlayerData playerData;
@@ -47,6 +52,12 @@ public class EnemyController : MonoBehaviour
         enemyData.SetHealthPoint(_health);
         enemyData.SetSpeed(_speed);
         enemyData.SetRangeAttack(_rangeAttack);
+        Debug.Log(healthBar);
+        if (healthBar is not null)
+        {
+            healthBar.maxValue = enemyData.GetHealthPoint();
+            healthBar.value = enemyData.GetHealthPoint();
+        }
     }
     private void Update()
     {
@@ -88,10 +99,14 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            _animator.SetBool("IsRun", true);
-            Vector2 target = new Vector2(player.transform.position.x, player.transform.position.y);
-            Vector2 newPos = Vector2.MoveTowards(rb.position, target, 4.5f * Time.fixedDeltaTime);
-            rb.MovePosition(newPos);
+            if (!_animator.GetBool("Dead"))
+            {
+                _animator.SetBool("IsRun", true);
+                Vector2 target = new Vector2(player.transform.position.x, player.transform.position.y);
+                Vector2 newPos = Vector2.MoveTowards(rb.position, target, _speed * Time.fixedDeltaTime);
+                rb.MovePosition(newPos);
+            }
+            
         }
     }
 
@@ -123,24 +138,32 @@ public class EnemyController : MonoBehaviour
         }
         if (enemyData.GetHealthPoint() <= 0)
         {
-            _animator.SetTrigger("Dead");
+            _animator.SetBool("Dead", true);
         }
+        if (healthBar is not null)
+            healthBar.value = enemyData.GetHealthPoint();
     }
 
     public void IsDie()
     {
         Destroy(gameObject);
-        
-        arenaData.SetCountEnemy(arenaData.GetCountEnemy() - 1);
-        if (arenaData.GetCountEnemy() == 0)
+        if (gameObject.tag == "Enemy")
         {
-            arenaData.NextWave();
+            Debug.Log(arenaData.GetCountEnemy());
+            arenaData.SetCountEnemy(arenaData.GetCountEnemy() - 1);
+            if (arenaData.GetCountEnemy() == 0)
+            {
+                arenaData.NextWave();
+            }
         }
+        Debug.Log(arenaData.GetCountEnemy());
     }
 
     public void Attack()
     {
         playerData.TakeDamage(enemyData.GetDamage());
+        Animator animator = player.GetComponent<Animator>();
+        animator.SetTrigger("Hurt");
     }
 
     public void RangeAttack()

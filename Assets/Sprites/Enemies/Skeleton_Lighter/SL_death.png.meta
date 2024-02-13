@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SL_death_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1424
+        width: 93
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe2aec6a36060c49822c1d052f1fe5d
+      internalID: 1595210918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_2
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1228
+        width: 92
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59918f7087121314db500f1f69d73efd
+      internalID: 2089151198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_12
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1032
+        width: 91
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c114b1f1c1795d54cae2352415e56a59
+      internalID: -1695985859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_16
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 836
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fb34c864c275d4fbb164bef48f7848
+      internalID: -1463669400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_21
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 640
+        width: 98
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a1f443a3e4d6dd419032d3c01220713
+      internalID: 857291025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_22
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 444
+        width: 99
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d56f533b34489429064f3466e6c94d
+      internalID: -652889072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_23
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 248
+        width: 100
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6dec39e2812c5648a5f4b9c744398c2
+      internalID: 1348920059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SL_death_24
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 52
+        width: 95
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f58a02c69545344facedcceebf68690
+      internalID: -926012320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SL_death_0: 1595210918
+      SL_death_1: -428070700
+      SL_death_10: 1043064954
+      SL_death_11: 1162643820
+      SL_death_12: -1695985859
+      SL_death_13: -1152416475
+      SL_death_14: -1161196808
+      SL_death_15: -352402434
+      SL_death_16: -1463669400
+      SL_death_17: 20677579
+      SL_death_18: -1040331378
+      SL_death_19: 620523677
+      SL_death_2: 2089151198
+      SL_death_20: -1328991959
+      SL_death_21: 857291025
+      SL_death_22: -652889072
+      SL_death_23: 1348920059
+      SL_death_24: -926012320
+      SL_death_3: -349251353
+      SL_death_4: -625578573
+      SL_death_5: 151310927
+      SL_death_6: -68802718
+      SL_death_7: -242545018
+      SL_death_8: 759315210
+      SL_death_9: -1810588593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

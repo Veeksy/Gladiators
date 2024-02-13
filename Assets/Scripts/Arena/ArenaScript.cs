@@ -14,34 +14,66 @@ public class ArenaScript : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI waves;
 
-    private PlayerData playerData;
+    [SerializeField]
+    List<GameObject> Potions = new List<GameObject>();
+
     private ArenaData arenaData;
+
+    [SerializeField]
+    private GameObject gameOverPanel;
+    [SerializeField]
+    private TextMeshProUGUI wavesComplete;
+
+    [SerializeField]
+    private TextMeshProUGUI coins;
+
     private int currentWave;
+    private float spawnPotionTime;
+    private float spawnPotionTimeMax;
 
-    private int bossFight;
-
+    private PlayerData playerData;
     void Start()
     {
-        playerData = PlayerData.getInstance();
         arenaData = ArenaData.getInstance();
+        playerData = PlayerData.getInstance();
+        arenaData.SetWave(currentWave);
         arenaData.NextWave();
         NextWave1();
+
         waves.SetText($"Волна: {arenaData.GetWave()}");
+        coins.SetText(Wallet.GetBalance().ToString());
         currentWave = arenaData.GetWave();
+        spawnPotionTimeMax = 15f;
     }
 
     private void Update()
     {
-        if (currentWave < arenaData.GetWave()) 
+        if (playerData.GetHealthPoint() <= 0)
         {
-            currentWave = arenaData.GetWave();
-            Invoke("NextWave1", 1);
+            GameOver();
         }
+        else
+        {
+            if (currentWave < arenaData.GetWave())
+            {
+                currentWave = arenaData.GetWave();
+                Invoke("NextWave1", 1);
+            }
+            if (spawnPotionTime >= spawnPotionTimeMax)
+            {
+                Instantiate(Potions[Random.Range(0, Potions.Count)], spawnPoints[Random.Range(0, spawnPoints.Count)].transform);
+                spawnPotionTime = 0;
+            }
+            spawnPotionTime += Time.deltaTime;
+        }
+       
     }
 
     void NextWave1()
     {
         waves.SetText($"Волна: {arenaData.GetWave()}");
+        
+        PlayerPrefs.SetInt("Wallet", Wallet.GetBalance());
         Invoke("startCor", 4);
     }
 
@@ -49,7 +81,8 @@ public class ArenaScript : MonoBehaviour
     {
         if (arenaData.GetWave() % 5 == 0)
         {
-            bossFight++;
+            arenaData.SetSpawning(1);
+            arenaData.SetCountEnemy(1);
             StartCoroutine(SpawnBoss());
         }
         else
@@ -64,19 +97,28 @@ public class ArenaScript : MonoBehaviour
         while (0 < arenaData.GetSpawning())
         {
             Instantiate(Enemies[Random.Range(0, Enemies.Count)], spawnPoints[Random.Range(0, spawnPoints.Count)].transform);
-            arenaData.SetSpawning(arenaData.GetSpawning()-1);
-            yield return new WaitForSeconds(arenaData.GetSpawnDelay()); 
-        }
-    }
-
-    IEnumerator SpawnBoss()
-    {
-        while (0 < bossFight)
-        {
-            Instantiate(Bosses[Random.Range(0, Bosses.Count)], spawnPoints[Random.Range(0, spawnPoints.Count)].transform);
-            bossFight--;
+            arenaData.SetSpawning(arenaData.GetSpawning() - 1);
             yield return new WaitForSeconds(arenaData.GetSpawnDelay());
         }
     }
+
+
+    IEnumerator SpawnBoss()
+    {
+        while (0 < arenaData.GetSpawning())
+        {
+            Instantiate(Bosses[Random.Range(0, Bosses.Count)], spawnPoints[Random.Range(0, spawnPoints.Count)].transform);
+            arenaData.SetSpawning(arenaData.GetSpawning() - 1);
+            yield return new WaitForSeconds(arenaData.GetSpawnDelay());
+        }
+    }
+
+
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        wavesComplete.SetText($"Волн пройдено:{arenaData.GetWave() - 1}");
+    }
+
 
 }
