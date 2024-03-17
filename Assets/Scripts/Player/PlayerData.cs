@@ -1,8 +1,10 @@
 using UnityEngine;
+using YG;
 
 public class PlayerData
 {
     private static PlayerData instance;
+    private int selectedPlayer { get; set; } = 0;  
 
     private const float DEFAULT_SPEED = 5f;
     private int playerLevel { get; set; } = 1;
@@ -30,6 +32,7 @@ public class PlayerData
     public float GetDefautSpeed() { return DEFAULT_SPEED; }
     public float GetBonusSpeed() { return bonus_speed; }
     public float GetDamage() { return damage; }
+    public int GetSelectedPlayer() { return selectedPlayer; }
 
 
     public void SetSpeed(float speed) { this.speed = speed; }
@@ -39,6 +42,7 @@ public class PlayerData
     public void SetMaxHealthPoint(float maxHealthPoint) { this.maxHealthPoint = maxHealthPoint; }
     public void SetDamage(float damage) { this.damage = damage; }
     public void SetMaxManaPoint(float maxManaPoint) { this.maxManaPoint = maxManaPoint; }
+    public void SetSelectedPlayer(int idPlayer) { this.selectedPlayer = idPlayer; }
 
     public void TakeDamage(float damage) 
     {

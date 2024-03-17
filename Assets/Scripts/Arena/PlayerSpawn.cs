@@ -6,9 +6,10 @@ public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField]
     List<GameObject> characters = new List<GameObject>();
-
+    PlayerData playerData;
     private void Awake()
     {
-        Instantiate(characters[2]);
+        playerData = PlayerData.getInstance();
+        Instantiate(characters[playerData.GetSelectedPlayer()]);   
     }
 }

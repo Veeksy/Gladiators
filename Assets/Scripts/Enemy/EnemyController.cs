@@ -52,7 +52,6 @@ public class EnemyController : MonoBehaviour
         enemyData.SetHealthPoint(_health);
         enemyData.SetSpeed(_speed);
         enemyData.SetRangeAttack(_rangeAttack);
-        Debug.Log(healthBar);
         if (healthBar is not null)
         {
             healthBar.maxValue = enemyData.GetHealthPoint();
@@ -122,10 +121,14 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            _animator.SetBool("IsRun", true);
-            Vector2 target = new Vector2(player.transform.position.x, player.transform.position.y);
-            Vector2 newPos = Vector2.MoveTowards(rb.position, target, 4.5f * Time.fixedDeltaTime);
-            rb.MovePosition(newPos);
+            if (!_animator.GetBool("Dead"))
+            {
+                    _animator.SetBool("IsRun", true);
+                Vector2 target = new Vector2(player.transform.position.x, player.transform.position.y);
+                Vector2 newPos = Vector2.MoveTowards(rb.position, target, _speed * Time.fixedDeltaTime);
+                rb.MovePosition(newPos);
+            }
+
         }
     }
 
@@ -149,14 +152,12 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
         if (gameObject.tag == "Enemy")
         {
-            Debug.Log(arenaData.GetCountEnemy());
             arenaData.SetCountEnemy(arenaData.GetCountEnemy() - 1);
             if (arenaData.GetCountEnemy() == 0)
             {
                 arenaData.NextWave();
             }
         }
-        Debug.Log(arenaData.GetCountEnemy());
     }
 
     public void Attack()

@@ -30,8 +30,7 @@ public class ArenaData
 
     public void NextWave()
     {
-        if (wave > 1)
-            Wallet.Replenishment(100);
+        
         SetWave(GetWave() + 1);
 
         if (GetSpawning() <= 12)

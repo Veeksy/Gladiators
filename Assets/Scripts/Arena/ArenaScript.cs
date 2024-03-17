@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using YG;
 
 public class ArenaScript : MonoBehaviour
 {
@@ -71,9 +72,19 @@ public class ArenaScript : MonoBehaviour
 
     void NextWave1()
     {
-        waves.SetText($"Волна: {arenaData.GetWave()}");
+        if (currentWave > 1)
+        {
+            Wallet.Replenishment(100);
+            waves.SetText($"Волна: {arenaData.GetWave()}");
+            coins.SetText(Wallet.GetBalance().ToString());
+            if (YandexGame.SDKEnabled)
+            {
+                YandexGame.savesData.coins = Wallet.GetBalance();
+                YandexGame.SaveProgress();
+            }
+
+        }
         
-        PlayerPrefs.SetInt("Wallet", Wallet.GetBalance());
         Invoke("startCor", 4);
     }
 
@@ -116,6 +127,8 @@ public class ArenaScript : MonoBehaviour
 
     public void GameOver()
     {
+        
+        Time.timeScale = 0;
         gameOverPanel.SetActive(true);
         wavesComplete.SetText($"Волн пройдено:{arenaData.GetWave() - 1}");
     }
